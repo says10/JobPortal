@@ -1,0 +1,3 @@
+applicant: utsav@gmail.com   pass: utsav2003
+
+Recruiters: <company name>@gmail.com     pass: <company name>123
