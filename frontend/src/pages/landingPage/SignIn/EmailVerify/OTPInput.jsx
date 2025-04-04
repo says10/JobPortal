@@ -15,7 +15,7 @@ export default function OTPInput() {
   function resendOTP() {
     if (disable) return;
     axios
-      .post("http://localhost:5001/api/auth/send_recovery_email", {
+      .post("https://jobportal-1-qyre.onrender.com/api/auth/send_recovery_email", {
         OTP: otp,
         recipient_email: email,
       })
