@@ -110,7 +110,7 @@ const sendEmail = (recipient_email, OTP) => {
     const mail_configs = {
       from: process.env.MY_EMAIL,
       to: recipient_email,
-      subject: "KODING 101 PASSWORD RECOVERY",
+      subject: "PASSWORD RECOVERY",
       html: `<!DOCTYPE html>
             <html lang="en" >
             <head>
@@ -132,9 +132,9 @@ const sendEmail = (recipient_email, OTP) => {
                 <p style="font-size:0.9em;">Regards,<br />Koding 101</p>
                 <hr style="border:none;border-top:1px solid #eee" />
                 <div style="float:right;padding:8px 0;color:#aaa;font-size:0.8em;line-height:1;font-weight:300">
-                  <p>Koding 101 Inc</p>
+                  <p>FindWork</p>
                   <p>1600 Amphitheatre Parkway</p>
-                  <p>California</p>
+              
                 </div>
               </div>
             </div>
@@ -255,23 +255,24 @@ const forgotPassword = async (req, res) => {
   await user.save();
   const html = `
     <p style="font-family: Arial, Helvetica, sans-serif; font-weight: 500; font-size: 14px">
-      Bạn nhận được email này vì bạn hoặc ai đó đã yêu cầu lấy lại mật khẩu
-    </p>
-    <p style="font-family: Arial, Helvetica, sans-serif; font-weight: 500; font-size: 14px">
-      Chọn vào đây để lấy lại mật khẩu, yêu cầu này sẽ mất hiệu lực sau 15 phút:
-    </p>
-    <button style="padding: 14px; background-color: #1E90FF; border-radius: 5px; border-style: none; cursor: pointer">
-      <a href=${process.env.CLIENT_URL}/password/reset/${resetToken}
-        style="color:white; text-decoration-line: none; font-size: 14px; font-weight: 700">
-          Reset Password
-      </a>
-    </button>
-    <p style="font-family: Arial, Helvetica, sans-serif; font-weight: 500; font-size: 14px">Nếu bạn không yêu cầu đặt lại mật khẩu, 
-    thì có thể bỏ qua email này</p>
-    <p style="font-family: Arial, Helvetica, sans-serif; font-weight: 900; font-size: 14px">Cảm ơn bạn, </p>
-    <p style="font-family: Arial, Helvetica, sans-serif; font-weight: 900; font-size: 14px">FindWork Support Team!</p>
-    <img src="https://res.cloudinary.com/dkmkutpxp/image/upload/v1703743129/a4qjcagbhc7juqqjlpir.jpg" style="width: 20rem" alt="thumbnail">
-  `;
+  You received this email because you or someone else requested to reset your password.
+</p>
+<p style="font-family: Arial, Helvetica, sans-serif; font-weight: 500; font-size: 14px">
+  Click here to reset your password. This request will expire after 15 minutes:
+</p>
+<button style="padding: 14px; background-color: #1E90FF; border-radius: 5px; border-style: none; cursor: pointer">
+  <a href=${process.env.CLIENT_URL}/password/reset/${resetToken}
+    style="color:white; text-decoration-line: none; font-size: 14px; font-weight: 700">
+      Reset Password
+  </a>
+</button>
+<p style="font-family: Arial, Helvetica, sans-serif; font-weight: 500; font-size: 14px">
+  If you did not request a password reset, you can safely ignore this email.
+</p>
+<p style="font-family: Arial, Helvetica, sans-serif; font-weight: 900; font-size: 14px">Thank you,</p>
+<p style="font-family: Arial, Helvetica, sans-serif; font-weight: 900; font-size: 14px">FindWork Support Team!</p>
+<img src="https://cdni.iconscout.com/illustration/premium/thumb/forgot-password-illustration-download-in-svg-png-gif-file-formats--man-forget-business-activity-pack-illustrations-3551744.png" style="width: 20rem" alt="thumbnail">
+`;
 
   const data = {
     email,
